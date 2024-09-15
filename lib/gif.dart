@@ -72,6 +72,7 @@ class Gif extends StatefulWidget {
   final String? semanticLabel;
   final bool excludeFromSemantics;
   final bool useCache;
+  final FilterQuality filterQuality;
 
   /// Creates a widget that displays a controllable gif.
   ///
@@ -110,6 +111,7 @@ class Gif extends StatefulWidget {
     this.centerSlice,
     this.matchTextDirection = false,
     this.useCache = true,
+    this.filterQuality = FilterQuality.low,
   })  : assert(
           fps == null || duration == null,
           'only one of the two can be set [fps] [duration]',
@@ -189,6 +191,7 @@ class _GifState extends State<Gif> with SingleTickerProviderStateMixin {
       repeat: widget.repeat,
       centerSlice: widget.centerSlice,
       matchTextDirection: widget.matchTextDirection,
+      filterQuality: widget.filterQuality,
     );
     return widget.placeholder != null && _frame == null
         ? widget.placeholder!(context)
